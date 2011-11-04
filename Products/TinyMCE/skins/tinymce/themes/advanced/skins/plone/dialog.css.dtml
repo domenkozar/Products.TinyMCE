@@ -95,6 +95,15 @@ padding-left: 0.5em;
 margin-left: 0.5em;
 }
 
+.contenttype-image {
+position: absolute;
+}
+
+/* InputPanel */
+.mceInputPanel {
+margin:10px 0 15px 0;
+}
+
 /* ActionPanel */
 .mceActionPanel {
 margin-top: 10px;
