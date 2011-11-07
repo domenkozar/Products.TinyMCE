@@ -129,6 +129,7 @@ width: 200px;
 .mceActionPanel #cancel {
 background: transparent;
 color: inherit;
+font-weight: normal;
 }
 /* </dtml-with> */
 
