@@ -16,7 +16,7 @@
 #general_panel { width: 100% }
 #uploadbutton { margin-top: 10px }
 #previewimagecontainer { text-align: center }
-#internallinkcontainer { width: 100%; height: 330px; position: relative }
+#internallinkcontainer { width: 100%; height: 330px; position: relative; }
 #internallinkcontainer div.item:hover { cursor: pointer; background-color: #EEE }
 #internalpath { margin-left: 5px }
 .legend { margin: 5px 0 }
@@ -24,10 +24,12 @@
 .legend .current { font-weight: bold; border: none!important; color: #000!important; cursor: default }
 .input-border { border: 0.1em solid #CCC!important }
 .browser-separator { background-color: #DDD }
+.shortcuts strong { cursor: pointer; }
 
 /* image plugin css */
 .thumbnail { overflow: hidden; }
-.thumbnail:hover { position:absolute; width: 100%; z-index:2;  }
+.thumbnail:hover { position:absolute; width: 100%; z-index:2; }
+*+html .thumbnail:hover { position:relative; width: 100%; z-index:2; }
 .thumbnail:hover p { word-wrap: break-word; overflow:visible; text-overflow: visible; white-space:normal; }
 .thumbnail p { overflow: hidden; text-overflow: ellipsis; white-space:nowrap; margin-bottom: 0; text-align: center; padding:0 5px; }
 .thumbnail input { display: none }

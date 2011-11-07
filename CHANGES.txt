@@ -25,6 +25,9 @@ HISTORY
 - Fixed http://dev.plone.org/plone/ticket/11681
   [tom_gross]
 
+- Fixed IE7 layout issue for too long file name, and various visual improvements
+  [vsomogyi]
+
 1.2.6 (2011-05-12)
 ------------------
 - Changed the color of the background on the external editor to light gray to make the buttons more visible.

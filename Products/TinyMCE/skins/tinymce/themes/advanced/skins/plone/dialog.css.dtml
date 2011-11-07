@@ -127,6 +127,7 @@ font-size: 1.0em;
 width: 200px;
 }
 .mceActionPanel #cancel {
+background: transparent;
 color: inherit;
 }
 /* </dtml-with> */

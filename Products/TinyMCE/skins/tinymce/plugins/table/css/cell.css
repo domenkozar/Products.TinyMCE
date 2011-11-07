@@ -1,7 +1,7 @@
 /* CSS file for cell dialog in the table plugin */
 
 .panel_wrapper div.current {
-	height: 200px;
+	height: 160px;
 }
 
 .advfield {
@@ -17,3 +17,7 @@
 }
 
 .hiddenset { display: none; }
+
+.width-height {
+    display: inline-block;
+}
