@@ -23,15 +23,15 @@ msgstr "(retirer le style)"
 
 #: ../utility.py:723
 msgid "Add new File"
-msgstr ""
+msgstr "Ajouter un fichier"
 
 #: ../utility.py:722
 msgid "Add new Image"
-msgstr ""
+msgstr "Ajouter une image"
 
 #: ../interfaces/utility.py:319
 msgid "After the deadline (FLOSS)"
-msgstr ""
+msgstr "After the deadline (FLOSS)"
 
 #: ../interfaces/utility.py:170
 msgid "Align center"
@@ -55,23 +55,23 @@ msgstr "Autoriser les images légendées"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:32
 msgid "Anchor"
-msgstr ""
+msgstr "Ancre"
 
 #: ../interfaces/utility.py:336
 msgid "AtD Error types to show"
-msgstr ""
+msgstr "AtD types d'erreur à afficher"
 
 #: ../interfaces/utility.py:325
 msgid "AtD Ignore strings"
-msgstr ""
+msgstr "AtD châines à ignorer"
 
 #: ../interfaces/utility.py:349
 msgid "AtD Service URL"
-msgstr ""
+msgstr "AtD URL du service"
 
 #: ../interfaces/utility.py:50
 msgid "Auto detect from content language"
-msgstr ""
+msgstr "Détection automatique à partir de la langue du contenu"
 
 #: ../interfaces/utility.py:162
 msgid "Backcolor"
@@ -83,7 +83,7 @@ msgstr "Gras"
 
 #: ../utility.py:735
 msgid "Browser"
-msgstr ""
+msgstr "Explorateur"
 
 msgid "Call-out"
 msgstr "Citation"
@@ -117,7 +117,7 @@ msgstr "Conteneur d'objets"
 
 #: ../browser/controlpanel.py:40
 msgid "Content Browser"
-msgstr ""
+msgstr "Explorateur de contenu"
 
 #: ../interfaces/utility.py:98
 msgid "Copy"
@@ -142,7 +142,7 @@ msgstr "Couper"
 
 #: ../interfaces/utility.py:315
 msgid "Default browser spellchecker"
-msgstr ""
+msgstr "Correcteur du navigateur"
 
 msgid "Definition description"
 msgstr "Définition"
@@ -184,7 +184,7 @@ msgstr "Largeur de l'éditeur"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:28
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 #: ../interfaces/utility.py:246
 msgid "Emotions"
@@ -289,7 +289,7 @@ msgstr "Accueil"
 
 #: ../utility.py:720
 msgid "Image Browser"
-msgstr ""
+msgstr "Explorateur d'image"
 
 #: ../interfaces/utility.py:394
 msgid "Image Objects"
@@ -297,7 +297,7 @@ msgstr "Objets image"
 
 #: ../interfaces/utility.py:433
 msgid "Image Shortcuts"
-msgstr ""
+msgstr "Raccourcis des images"
 
 #: ../interfaces/utility.py:370
 msgid "Images will be automatically captioned."
@@ -342,7 +342,7 @@ msgstr "Insérer l'heure"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:5
 msgid "Insert/Edit"
-msgstr ""
+msgstr "Insérer/Modifier"
 
 #: ../interfaces/utility.py:214
 msgid "Insert/edit anchor"
@@ -366,7 +366,7 @@ msgstr "Insérer/éditer média"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:20
 msgid "Internal"
-msgstr ""
+msgstr "Interne"
 
 msgid "Invisible grid"
 msgstr "Grille invisible"
@@ -390,11 +390,11 @@ msgstr "Librairies"
 
 #: ../utility.py:721
 msgid "Link Browser"
-msgstr ""
+msgstr "Explorateur"
 
 #: ../interfaces/utility.py:425
 msgid "Link Shortcuts"
-msgstr ""
+msgstr "Raccourcis des liens"
 
 #. Default: "Link to anchor"
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:198
@@ -415,11 +415,11 @@ msgstr "Liens vers les objets sur le site pouvant utiliser les identifiants uniq
 
 #: ../interfaces/utility.py:434
 msgid "List of shortcuts to appear in image browser for quick navigation."
-msgstr ""
+msgstr "Liste des raccourcis qui apparaitrons dans l'explorateur d'images pour une navigation rapide."
 
 #: ../interfaces/utility.py:426
 msgid "List of shortcuts to appear in link browser for quick navigation."
-msgstr ""
+msgstr "Liste des raccourcis qui apparaitrons dans l'explorateur de liens pour une navigation rapide."
 
 #: ../utility.py:731
 msgid "Lists"
@@ -452,7 +452,7 @@ msgstr "Paragraphe standard"
 
 #: ../interfaces/utility.py:448
 msgid "Number of columns in thumbnails mode"
-msgstr ""
+msgstr "Nombre de colonnes dans le mode vignettes"
 
 msgid "Numbers"
 msgstr "Chiffres"
@@ -535,7 +535,7 @@ msgstr "Sauver"
 
 #: ../utility.py:737
 msgid "Search results:"
-msgstr ""
+msgstr "Résultats de recherche:"
 
 #: ../interfaces/utility.py:130
 msgid "Select Style"
@@ -551,7 +551,7 @@ msgstr "Configuration de TinyMCE l'éditeur wysiwyg."
 
 #: ../utility.py:736
 msgid "Shortcuts"
-msgstr ""
+msgstr "Raccourcis"
 
 #: ../interfaces/utility.py:266
 msgid "Spellchecker"
@@ -613,7 +613,7 @@ msgstr "Texte"
 
 #: ../interfaces/utility.py:308
 msgid "This option allows you to choose the spellchecker for TinyMCE. If you want the spellchecker button to be visible, make sure it is enabled in the toolbar settings."
-msgstr ""
+msgstr "Cette option vous permet de choisir le correcteur orthographique de TinyMCE. Si vous souhaitez que le bouton de correction apparaisse, assurez vous qu'il est activé dans la configuration de la barre d'outils."
 
 #: ../interfaces/utility.py:415
 msgid "This option controls how entities/characters get processed. Named: Characters will be converted into named entities based on the entities option. Numeric: Characters will be converted into numeric entities. Raw: All characters will be stored in non-entity form except these XML default entities: amp lt gt quot"
@@ -645,7 +645,7 @@ msgstr "Cette option vous donne la possibiltié de préciser la hauteur de l'éd
 
 #: ../interfaces/utility.py:35
 msgid "This option gives you the ability to specify the width of the editor (like 100% or 400px)."
-msgstr ""
+msgstr "Cette option vous permet de préciser la largeur de l'éditeur (100% ou 400px)."
 
 #: ../interfaces/utility.py:81
 msgid "This option gives you the ability to specify the width of the toolbar in pixels."
@@ -657,7 +657,7 @@ msgstr "Cette option précise la direction d'écriture par défaut. Certaines la
 
 #: ../interfaces/utility.py:441
 msgid "Thumbnail size in thumbnails mode"
-msgstr ""
+msgstr "Taille des vignettes dans le mode vignette"
 
 #. Default: "TinyMCE"
 #: ../profiles/upgrade_10_to_11/controlpanel.xml
@@ -697,7 +697,7 @@ msgstr "Largeur de la barre d'outils"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:16
 msgid "Type of link"
-msgstr ""
+msgstr "Type de lien"
 
 #: ../interfaces/utility.py:142
 msgid "Underline"
@@ -717,11 +717,11 @@ msgstr "Liste désordonnée"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:137
 msgid "Upload File"
-msgstr ""
+msgstr "Télécharger (up)"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:324
 msgid "Upload into current folder"
-msgstr ""
+msgstr "Télécharger (up) dans le dossier courant"
 
 msgid "Upper Alpha"
 msgstr "Alpha majuscules"
@@ -743,40 +743,40 @@ msgstr "Direction d'écriture"
 
 #: ../utility.py:738
 msgid "You are here:"
-msgstr ""
+msgstr "Vous êtes ici:"
 
 #. Default: "The URL of the \"After the Deadline\" grammar and spell checking server. The default value is the public server, but ideally you should download and install your own and specify its address here."
 #: ../interfaces/utility.py:350
 msgid "help_atd_service_url"
-msgstr ""
+msgstr "L'URL du serveur \"After the Deadline\", le service de correction grammaticale et orthographique. La valeur par défaut est le serveur publique, mais idéalement vous devriez télécharger et installer votre propre serveur et préciser l'adresse ici."
 
 #. Default: "A list of erorr types which the \"After the Deadline\" spellchecker should check for. By default, all the available error type will be listed here."
 #: ../interfaces/utility.py:337
 msgid "help_atderrortypes_to_show"
-msgstr ""
+msgstr "Une liste de type d'erreur que le correcteur \"After the Deadline\" devrait vérifier. Par défaut, tous les types d'erreur disponible seront listés ici."
 
 #. Default: "Enter a list of custom plugins which will be loaded in the editor. Format is pluginname or pluginname|location, one per line."
 #: ../interfaces/utility.py:400
 msgid "help_tinymce_plugins"
-msgstr ""
+msgstr "Ajouter une liste de modules additionnels qui seront chargé dans l'éditeur. Le format est nomduplugin ou nomduplugin|chemin, un par ligne."
 
 #: ../interfaces/utility.py:317
 msgid "ieSpell (free for personal use)"
-msgstr ""
+msgstr "ieSpell (gratuit pour un usage personnel)"
 
 #. Default: "A list of strings which the \"After the Deadline\"spellchecker should ignore. Note: This option is only applicable when the appropriate spellchecker has been chosen above."
 #: ../interfaces/utility.py:326
 msgid "label_atd_ignore_strings"
-msgstr ""
+msgstr "Une liste de chaînes que le correcteur \"After the Deadline\" devrait ignorer. Note: Cette option n'est applicable que si le correcteur approprié a été choisi."
 
 #. Default: "Editor Plugins"
 #: ../interfaces/utility.py:399
 msgid "label_tinymce_plugins"
-msgstr ""
+msgstr "Modules additionnels"
 
 #: ../skins/tinymce/plugins/plonebrowser/plonebrowser.htm.pt:144
 msgid "or External URL"
-msgstr ""
+msgstr "ou URL externe"
 
 #. Default: "Edit without visual editor"
 #: ../skins/tinymce/tinymce_wysiwyg_support.pt:27
