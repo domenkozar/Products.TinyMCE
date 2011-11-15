@@ -1040,7 +1040,7 @@ BrowserDialog.prototype.populateAnchorList = function () {
     nodes_length = nodes.length;
     for (i = 0; i < nodes_length; i++) {
         if ((name = this.editor.dom.getAttrib(nodes[i], "name")) !== "") {
-            html += '<div class="' + divclass + '"><input type="radio" class="noborder" name="anchorlink" value="#' + name + '"/> ' + name + '</div>';
+            html += '<div class="' + divclass + '"><input type="radio" class="noborder" name="anchorlink" id="#' + name + '" value="#' + name + '"/> <label for="#' + name + '">' + name + '</label></div>';
             divclass = divclass === "even" ? "odd" : "even";
         }
     }
@@ -1054,7 +1054,7 @@ BrowserDialog.prototype.populateAnchorList = function () {
             if (title_match === null) {
                 name = title.toLowerCase();
                 name = name.replace(/[^a-z]/g, '-');
-                html += '<div class="' + divclass + '"><input type="radio" class="noborder" name="anchorlink" value="#mce-new-anchor-' + name + '"/> ' + title + '</div>';
+                html += '<div class="' + divclass + '"><input type="radio" class="noborder" name="anchorlink" id="#mce-new-anchor-' + name + '" value="#mce-new-anchor-' + name + '"/><label for="#mce-new-anchor-' + name + '"> ' + title + '</label></div>';
                 divclass = divclass === "even" ? "odd" : "even";
             }
         }
