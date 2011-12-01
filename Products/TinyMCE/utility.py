@@ -695,7 +695,7 @@ class TinyMCE(SimpleItem):
         return 'text/html'
 
     security.declareProtected('View', 'getConfiguration')
-    def getConfiguration(self, context=None, field=None, request=None):
+    def getConfiguration(self, context=None, field=None, request=None, script_url=None):
         """Return JSON configuration that is passed to javascript tinymce constructor"""
         results = {}
 
@@ -862,6 +862,8 @@ class TinyMCE(SimpleItem):
 
         results['link_using_uids'] = self.link_using_uids
         results['contextmenu'] = self.contextmenu
+        if script_url:
+            results['script_url'] = script_url
 
         if self.allow_captioned_images:
             results['allow_captioned_images'] = True
@@ -943,8 +945,8 @@ class TinyMCE(SimpleItem):
         results['inlinepopups_skin'] = "plonepopup"
         results['body_class'] = "documentContent"
         results['body_id'] = "content"
-        #results['remove_linebreaks'] = False
-        #results['convert_newlines_to_brs'] = True
+        results['remove_linebreaks'] = False
+        results['convert_newlines_to_brs'] = True
         results['table_firstline_th'] = True
         results['force_span_wrappers'] = True
         results['fix_list_elements'] = False
