@@ -39,13 +39,13 @@
 		<div id="browseimage_panel" class="column">
 			<h2></h2>
 			<div class="formHelp">
-				<strong i18n:translate="">You are here:</strong>
+				<strong i18n:domain="plone.tinymce" i18n:translate="">You are here:</strong>
 				<span id="internalpath"></span>
 			</div>
 			<div id="general_panel" class="column">
 				<div class="field">
 					<div class="widget">
-						<input type="text" name="searchtext" id="searchtext" title="Search Site" placeholder="Search Site" value="" i18n:attributes="placeholder, title"/>
+						<input type="text" name="searchtext" id="searchtext" title="Search Site" placeholder="Search Site" value="" i18n:attributes="placeholder; title"/>
 					</div>
 				</div>
 				<div id="internallinkcontainer" class="widget radioscrolllist input-border"></div>
@@ -59,7 +59,7 @@
 			</div>
 		</div>
 		<div id="details_panel" class="column hide">
-			<h2 i18n:translate="plonebrowser_dlg_preview"></h2>
+			<h2 i18n:translate="plonebrowser_dlg_details">Details</h2>
 			<div class="widget radioscrolllist input-border">
 				<div class="field">
 					<div class="widget">
@@ -118,6 +118,10 @@
 					</div>
 				</div>
 
+                <div class="field">
+                    <input type="submit" id="insert-selection" class="context plonebutton" name="insert-image"
+                           i18n:attributes="value" value="OK" />
+                </div>
 			</div>
 		</div>
 		<div id="addimage_panel" class="column hide">
@@ -322,10 +326,6 @@
 		</div>
 
 		<div class="visualClear"><!-- --></div>
-                <div class="mceActionPanel">
-                  <input type="submit" id="insert-selection" class="context plonebutton" name="insert-image"
-                           i18n:attributes="value" value="common_insert" />
-               </div>
   </div>
 </body>
 </html>
