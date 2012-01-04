@@ -8,7 +8,7 @@ from types import StringTypes
 from zope.component import getUtilitiesFor, getUtility, queryUtility, getMultiAdapter
 try:
     from zope.component.hooks import getSite
-    getSite  #Pyflakes
+    getSite  # Pyflakes
 except ImportError:
     from zope.app.component.hooks import getSite
 from zope.i18n import translate
@@ -481,7 +481,7 @@ class TinyMCE(SimpleItem):
             'ol': COMMON_ATTRS | set('compact type'.split()),
             'optgroup': COMMON_ATTRS | set('disabled label'.split()),
             'option': COMMON_ATTRS | set('selected disabled label value'.split()),
-            'p': COMMON_ATTRS | set('align'.split()),
+            '#p': COMMON_ATTRS | set('align'.split()),
             'param': set('id name value valuetype type'.split()),
             'pre': COMMON_ATTRS | set('width'.split()),
             'q': COMMON_ATTRS | set('cite'.split()),
@@ -603,7 +603,7 @@ class TinyMCE(SimpleItem):
 
     security.declarePrivate('getStyles')
     def getStyles(self, config):
-        """ See ITinyMCE interface 
+        """ See ITinyMCE interface
         """
         h = {'Text': [], 'Selection': [], 'Tables': [], 'Lists': [], 'Print': []}
         styletype = ""
@@ -802,7 +802,7 @@ class TinyMCE(SimpleItem):
         valid_elements = self.getValidElements()
         results['valid_elements'] = ','.join(["%s[%s]" % (key, '|'.join(value)) for key, value in valid_elements.iteritems()])
 
-	results['customplugins'] = self.customplugins.splitlines()
+        results['customplugins'] = self.customplugins.splitlines()
 
         # Set toolbar_location
         if self.toolbar_external:
@@ -841,9 +841,9 @@ class TinyMCE(SimpleItem):
         except (TypeError, ValueError):
             results['toolbar_width'] = 440
 
-	# is_rtl handles every possible setting as far as RTL/LTR is concerned
-	# pass that to tinmyce
-	if request:
+        # is_rtl handles every possible setting as far as RTL/LTR is concerned
+        # pass that to tinmyce
+        if request:
             portal_state = getMultiAdapter((context, request), name=u'plone_portal_state')
             results['directionality'] = portal_state.is_rtl() and 'rtl' or 'ltr'
 
@@ -862,6 +862,7 @@ class TinyMCE(SimpleItem):
 
         results['link_using_uids'] = self.link_using_uids
         results['contextmenu'] = self.contextmenu
+        results['entity_encoding'] = self.entity_encoding
         if script_url:
             results['script_url'] = script_url
 
@@ -874,9 +875,6 @@ class TinyMCE(SimpleItem):
             results['rooted'] = True
         else:
             results['rooted'] = False
-
-
-        results['entity_encoding'] = self.entity_encoding
 
         props = getToolByName(self, 'portal_properties')
         livesearch = props.site_properties.getProperty('enable_livesearch', False)
@@ -945,8 +943,6 @@ class TinyMCE(SimpleItem):
         results['inlinepopups_skin'] = "plonepopup"
         results['body_class'] = "documentContent"
         results['body_id'] = "content"
-        #results['remove_linebreaks'] = False
-        #results['convert_newlines_to_brs'] = True
         results['table_firstline_th'] = True
         results['force_span_wrappers'] = True
         results['fix_list_elements'] = False

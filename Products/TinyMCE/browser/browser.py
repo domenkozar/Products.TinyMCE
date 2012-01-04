@@ -123,8 +123,8 @@ class TinyMCEBrowserView(BrowserView):
         utility = getToolByName(self.context, 'portal_tinymce')
         return utility.getConfiguration(context=self.context,
                                         field=fieldname,
-                                        script_url=script_url,
-                                        request=self.request)
+                                        request=self.request,
+                                        script_url=script_url)
 
 
 class ATDProxyView(object):
@@ -173,6 +173,11 @@ class ConfigurationViewlet(ViewletBase):
             return False
         context = aq_inner(self.context)
         factory = getToolByName(context, 'portal_factory', None)
+
+        if '++add++' in self.request.getURL():
+            # dexterity support for it's portal factory
+            return True
+
         if factory is not None and factory.isTemporary(context):
             # Always include TinyMCE on temporary pages
             # These are ment for editing and get false positives

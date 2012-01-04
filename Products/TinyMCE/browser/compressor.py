@@ -12,6 +12,7 @@ from datetime import datetime
 import os.path
 
 from zope.component import queryUtility, getMultiAdapter
+from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ResourceRegistries.tools.packer import JavascriptPacker
@@ -26,12 +27,12 @@ except ImportError:
     import json
 
 def isContextUrl(url):
-    """Some url do not represent context. Check is based on url. If 
+    """Some url do not represent context. Check is based on url. If
     fragment are detected, this method return False
     fragments are portal_factory, ++contextportlets++, ++groupportlets++,
     ++contenttypeportlets++
     """
-    fragments = ('portal_factory', '++contextportlets++', '++groupportlets++', 
+    fragments = ('portal_factory', '++contextportlets++', '++groupportlets++',
                 '++contenttypeportlets++')
 
     for fragment in fragments:
@@ -45,6 +46,7 @@ class TinyMCECompressorView(BrowserView):
 
     # TODO: cache
     def __call__(self):
+        """Parameters are parsed from url query as defined by tinymce"""
         plugins = self.request.get("plugins", "").split(',')
         languages = self.request.get("languages", "").split(',')
         themes = self.request.get("themes", "").split(',')
@@ -78,12 +80,10 @@ class TinyMCECompressorView(BrowserView):
             else:
                 return JavascriptPacker('safe').pack(tiny_mce_gzip)
 
-        now = datetime.utcnow()
-        response['Date'] = now.strftime('%a, %d %b %Y %H:%M:%S GMT')
-
+        # use traverse so developers can override tinymce through skins
         traverse = lambda name: str(self.context.restrictedTraverse(name, ''))
 
-        # Add core, with baseURL added
+        # add core javascript file with configure ajax call
         content = [
             traverse("tiny_mce%s.js" % suffix).replace(
                 "tinymce._init();",
@@ -100,18 +100,8 @@ class TinyMCECompressorView(BrowserView):
 
                 content.append('tinymce.PluginManager.load("%s", "%s/%s");' % (
                     name, config['portal_url'], path));
-
-        # Add core languages
-        # TODO: we have our own translations
-        for lang in languages:
-            content.append(traverse("langs/%s.js" % lang))
-
-        # Add themes
-        for theme in themes:
-            content.append(traverse("themes/%s/editor_template%s.js" % (theme, suffix)))
-
-            for lang in languages:
-                content.append(traverse("themes/%s/langs/%s.js" % (theme, lang)))
+            else:
+                plugins.append(plugin)
 
         # Add plugins
         for plugin in plugins:
