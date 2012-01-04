@@ -973,6 +973,16 @@ BrowserDialog.prototype.displayPanel = function(panel, upload_allowed) {
         jq('#upload', document).attr('disabled', true).fadeTo(1, 0.5);
     }
 
+    // handle insert button
+    if (jq.inArray(panel, ["details", "external", "email", "anchor", "advanced"]) > -1) {
+        jq('#insert-selection', document).attr('disabled', false).fadeTo(1, 1);
+    } else if (jq("input:radio[name=internallink]:checked", document).length === 1) {
+        jq('#insert-selection', document).attr('disabled', false).fadeTo(1, 1);
+
+    } else {
+        jq('#insert-selection', document).attr('disabled', true).fadeTo(1, 0.5);
+    }
+
     // handle email panel
     if (panel === "email") {
         jq('#email_panel', document).removeClass('hide');
@@ -996,12 +1006,6 @@ BrowserDialog.prototype.displayPanel = function(panel, upload_allowed) {
         jq('#advanced_panel', document).removeClass('hide');
     } else {
         jq('#advanced_panel', document).addClass('hide');
-    }
-    // show details panel, if an entry is selected and we
-    // return from the advanced panel
-    checkedlink = jq("input:radio[name=internallink]:checked", document);
-    if ((checkedlink.length === 1) && (panel === "browse")) {
-      this.setDetails(jq(checkedlink).attr('value'));
     }
     // handle details/preview panel
     if (panel === 'details') {
