@@ -8,12 +8,23 @@ Licensed under the terms of the MIT License (see LICENSE.txt)
 """
 
 from Acquisition import aq_inner
+from datetime import datetime
+import os.path
+
+from zope.component import queryUtility, getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ResourceRegistries.tools.packer import JavascriptPacker
-from zope.component import getMultiAdapter
 
+from Products.TinyMCE.interfaces.utility import ITinyMCE
+from Products.CMFCore.utils import getToolByName
+
+try:
+    import simplejson as json
+    json  # Pyflakes
+except ImportError:
+    import json
 
 def isContextUrl(url):
     """Some url do not represent context. Check is based on url. If
@@ -30,11 +41,10 @@ def isContextUrl(url):
 
     return True
 
-
 class TinyMCECompressorView(BrowserView):
     tiny_mce_gzip = ViewPageTemplateFile('tiny_mce_gzip.js')
 
-    # TODO: cache?
+    # TODO: cache
     def __call__(self):
         """Parameters are parsed from url query as defined by tinymce"""
         plugins = self.request.get("plugins", "").split(',')
@@ -42,27 +52,28 @@ class TinyMCECompressorView(BrowserView):
         themes = self.request.get("themes", "").split(',')
         isJS = self.request.get("js", "") == "true"
         suffix = self.request.get("suffix", "") == "_src" and "_src" or ""
-
-        # set correct content type
         response = self.request.response
         response.setHeader('Content-type', 'application/javascript')
-
-        # get base_url
         base_url = '/'.join([self.context.absolute_url(), self.__name__])
         # fix for Plone <4.1 http://dev.plone.org/plone/changeset/48436
         # only portal_factory part of condition!
         if not isContextUrl(base_url):
             portal_state = getMultiAdapter((self.context, self.request),
-                name="plone_portal_state")
+			    name="plone_portal_state")
             base_url = '/'.join([portal_state.portal_url(), self.__name__])
 
-        config = getMultiAdapter((self.context, self.request),
-            name="tinymce-jsonconfiguration")
-
         if not isJS:
-            # TODO: pass fieldname to allow field specific configuration
-            tiny_mce_gzip = self.tiny_mce_gzip(tinymce_json_config=config(fieldname=None, script_url=base_url))
-
+            tinymce_config = []
+            if not hasattr(self.context, 'schema'):
+                return ''
+            for field in self.context.schema.filterFields(type='text'):
+                if field.widget.getName() == 'RichWidget':
+                    fieldname = field.getName()
+                    jsonconfig = getMultiAdapter((self.context, self.request),
+                                             name="tinymce-jsonconfiguration")
+                    tinymce_config.append({'fieldname': fieldname,
+                                           'config': jsonconfig(fieldname, base_url)})
+            tiny_mce_gzip = self.tiny_mce_gzip(tinymce_json_config=tinymce_config)
             js_tool = getToolByName(aq_inner(self.context), 'portal_javascripts')
             if js_tool.getDebugMode():
                 return tiny_mce_gzip
@@ -79,22 +90,24 @@ class TinyMCECompressorView(BrowserView):
                 "tinymce.baseURL='%s';tinymce._init();" % base_url)
         ]
 
-        portal_tinymce = getToolByName(self.context, 'portal_tinymce')
+        # add custom plugins
+        portal_tinymce = getToolByName(self.context,'portal_tinymce')
         customplugins = {}
         for plugin in portal_tinymce.customplugins.splitlines():
             if '|' in plugin:
                 name, path = plugin.split('|', 1)
                 customplugins[name] = path
+
                 content.append('tinymce.PluginManager.load("%s", "%s/%s");' % (
-                    name, getToolByName(self.context, 'portal_url')(), path))
+                    name, config['portal_url'], path));
             else:
                 plugins.append(plugin)
 
         # Add plugins
-        for plugin in set(plugins):
+        for plugin in plugins:
             if plugin in customplugins:
                 script = customplugins[plugin]
-                path, bn = customplugins[plugin].split('/')
+                path, bn = os.path.split(customplugins[plugin])
             else:
                 script = "plugins/%s/editor_plugin%s.js" % (plugin, suffix)
                 path = 'plugins/%s' % plugin
@@ -104,17 +117,6 @@ class TinyMCECompressorView(BrowserView):
             for lang in languages:
                 content.append(traverse("%s/langs/%s.js" % (path, lang)))
 
-        # Add core languages
-        for lang in languages:
-            content.append(traverse("langs/%s.js" % lang))
-
-        # Add themes
-        for theme in themes:
-            content.append(traverse("themes/%s/editor_template%s.js" % (theme, suffix)))
-
-            for lang in languages:
-                content.append(traverse("themes/%s/langs/%s.js" % (theme, lang)))
-
-        # TODO: add additional javascripts in plugins
+        # TODO: add aditional javascripts in plugins
 
         return ''.join(content)

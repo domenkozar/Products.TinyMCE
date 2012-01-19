@@ -690,8 +690,7 @@ class TinyMCE(SimpleItem):
 
     security.declareProtected('View', 'getConfiguration')
     def getConfiguration(self, context=None, field=None, request=None, script_url=None):
-        """Return JSON configuration that is passed to javascript tinymce constructor
-    """
+        """Return JSON configuration that is passed to javascript tinymce constructor"""
         results = {}
 
         # Get widget attributes
